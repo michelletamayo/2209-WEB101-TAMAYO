@@ -48,6 +48,10 @@
         color: #555;
     }
 
+    .info-card, .section {
+        transition: 0.3s;
+    }
+
     .info-card {
         background: #efe0ff;
         margin: 20px auto;
@@ -55,7 +59,8 @@
         border-radius: 12px;
         border-left: 5px solid #6200ea;
         text-align: left;
-        width: auto;
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
 
     .info-item {
@@ -67,11 +72,6 @@
         gap: 10px;
     }
 
-    .info-item i {
-        width: 18px;
-        color: #6200ea;
-    }
-
     .section {
         background: #eee4ff;
         padding: 18px;
@@ -79,6 +79,8 @@
         border-radius: 12px;
         text-align: left;
         border-left: 5px solid #6200ea;
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
 
     .section h3 {
@@ -87,10 +89,6 @@
         display: flex;
         align-items: center;
         gap: 10px;
-    }
-
-    .section h3 i {
-        color: #6200ea;
     }
 
     .social-btn {
@@ -106,31 +104,23 @@
     }
 
     .fb { background: #1877f2; }
-    .fb:hover { background: #0f5dcc; }
-
     .ig { background: #d62976; }
-    .ig:hover { background: #a31f5c; }
 
-    ul {
-        margin: 8px 0 0 0;
-        padding-left: 20px;
+    @keyframes slideUpStay {
+        0% {
+            transform: translateY(0);
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+        100% {
+            transform: translateY(-12px);
+            box-shadow: 0px 12px 30px rgba(0,0,0,0.25);
+        }
     }
 
-    ul li {
-        margin: 4px 0;
-    }
-
-    @media (max-width: 600px) {
-        .container {
-            padding: 18px;
-        }
-        .profile-img {
-            width: 130px;
-            height: 130px;
-        }
+    .clicked {
+        animation: slideUpStay 0.35s ease-out forwards;
     }
 </style>
-
 </head>
 <body>
 
@@ -148,7 +138,7 @@
 
     <div class="section">
         <h3><i class="fas fa-user"></i> About Me</h3>
-        Hello! I am Michelle, a student who loves exploring and learning new things. I enjoy listening to music, watching movies, and spending time with people I care about.
+        Hello! I am Michelle, a student who loves exploring and learning new things.
     </div>
 
     <div class="section">
@@ -161,7 +151,7 @@
     </div>
 
     <div class="section">
-        <h3><i class="fas a-star"></i> Favorites</h3>
+        <h3><i class="fas fa-star"></i> Favorites</h3>
         <ul>
             <li>Color: Purple</li>
             <li>Food: Fries & Street Food</li>
@@ -172,8 +162,8 @@
     <div class="section">
         <h3><i class="fas fa-graduation-cap"></i> Education</h3>
         <ul>
-            <li>BS in Information Technology - College (Current)</li>
-            <li>Electron College of Technical Education - Senior High School Graduate</li>
+            <li>BS in Information Technology (Current)</li>
+            <li>Electron College of Technical Education Graduate</li>
         </ul>
     </div>
 
@@ -189,5 +179,13 @@
 
 </div>
 
+<script>
+    document.querySelectorAll('.info-card, .section').forEach(box => {
+        box.addEventListener('click', () => {
+            box.classList.add('clicked');
+        });
+    });
+</script>
+
 </body>
-</html>
+            </html>
